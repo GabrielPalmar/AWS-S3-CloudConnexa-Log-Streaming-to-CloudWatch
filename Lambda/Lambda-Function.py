@@ -12,7 +12,7 @@ logger.setLevel(logging.INFO)
 s3_client = boto3.client('s3')
 cw_client = boto3.client('logs')
 
-LOG_GROUP_NAME = 'CloudConnexa-S3-Logs'
+LOG_GROUP_NAME = 'CloudConnexa/Logs'
 LOG_STREAM_NAME = 'Lambda-Stream'
 
 def lambda_handler(event, context):
@@ -40,6 +40,7 @@ def lambda_handler(event, context):
         # Convert timestamp to Unix time in milliseconds
         timestamp = int(datetime.strptime(timestamp_str, '%Y-%m-%dT%H:%M:%S.%fZ').timestamp() * 1000)
         
+        # Uncomment to have the log entry into the Lambda logging
         # logger.info(f"Log entry: {json.dumps(log_entry, indent=2)}")
 
         # Ensure log group exists
