@@ -1,10 +1,7 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: 2010-09-09
 Description: Create a Lambda Function to transfer S3 CloudConnexa Log events into AWS CloudWatch.
 
 Parameters:
-  S3BucketName:
-    Description: Name of the S3 bucket that is receiving the CloudConnexa logs.
-    Type: String
   LogGroupName:
     Description: Name of the CloudWatch log group where logs will be sent.
     Type: String
@@ -33,7 +30,7 @@ Resources:
               - Effect: 'Allow'
                 Action:
                   - 's3:GetObject'
-                Resource: !Sub 'arn:aws:s3:::${S3BucketName}/*'
+                Resource: !Sub 'arn:aws:s3:::*'
               - Effect: 'Allow'
                 Action:
                   - "logs:CreateLogStream"
@@ -41,16 +38,16 @@ Resources:
                   - "logs:PutLogEvents"
                   - "logs:DescribeLogStreams"
                 Resource: 
-                  - !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:CloudConnexa/Logs:*"
+                  - !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*"
 
   LambdaFunction:
-      Type: 'AWS::Lambda::Function'
-      Properties:
-        FunctionName: "TransferS3LogsToCloudWatch"
-        Handler: "index.handler"
-        Role: !GetAtt LambdaS3CloudWatchRole.Arn
-        Code:
-          ZipFile: |
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: "TransferS3LogsToCloudWatch"
+      Handler: "index.lambda_handler"
+      Role: !GetAtt LambdaS3CloudWatchRole.Arn
+      Code:
+        ZipFile: |
             import boto3
             import gzip
             import json
@@ -154,27 +151,15 @@ Resources:
                     return {
                         'statusCode': 500,
                         'body': f'Error processing log event: {str(e)}'
-                    }    
-        Runtime: "python3.9"
-        Timeout: 60
-        Environment:
-          Variables:
-            LOG_GROUP_NAME: !Ref LogGroupName
-            LOG_STREAM_NAME: !Ref LogStreamName
+                    }   
+      Runtime: "python3.9"
+      Timeout: 60
+      Environment:
+        Variables:
+          LOG_GROUP_NAME: !Ref LogGroupName
+          LOG_STREAM_NAME: !Ref LogStreamName
 
-  S3Bucket:
-    Type: 'AWS::S3::Bucket'
-    Properties:
-      BucketName: !Ref S3BucketName
-      NotificationConfiguration:
-        LambdaConfigurations:
-          - Event: "s3:ObjectCreated:*"
-            Function: !GetAtt LambdaFunction.Arn
-
-  PermissionForS3ToInvokeLambda:
-    Type: 'AWS::Lambda::Permission'
-    Properties:
-      FunctionName: !Ref LambdaFunction
-      Action: 'lambda:InvokeFunction'
-      Principal: 's3.amazonaws.com'
-      SourceArn: !GetAtt S3Bucket.Arn
+Outputs:
+  LogGroupNameOutput:
+    Description: The name of the CloudWatch Log Group.
+    Value: !Ref LogGroupName
