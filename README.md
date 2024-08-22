@@ -6,7 +6,6 @@
 * [Script Logic](#script-logic)
 * [Prerequisites](#prerequisites)
 * [Setup](#setup)
-* [Usage](#usage)
 
 ## Introduction
 Lambda function script that pulls files placed in an S3 bucket from CloudConnexa and places the logs into CloudWatch logs.
@@ -85,4 +84,4 @@ You must set a trigger into the S3 Bucket where the CloudConnexa logs are being 
 ## Setup
 You can copy the Lambda script or use the CloudFormation template to allocate the Lambda Function and required IAM roles.
 
-## Usage
+[![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=CC-Resource-Monitor&templateURL=https://aws-cloudconnexa-resource-monitor.s3.us-east-2.amazonaws.com/CloudFormation-Template.yaml)
