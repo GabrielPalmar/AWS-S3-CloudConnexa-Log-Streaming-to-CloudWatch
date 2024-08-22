@@ -28,7 +28,7 @@ CloudConnexa:
 The Lambda function gets the file upon a trigger set in the S3 bucket. This file is compressed in a .gz file; the function decompresses it and gets the JSON line file content to push it to the defined CloudWatch Log Group.
 
 ## Prerequisites
-An IAM role with specific permissions must be attached to the Lambda function to send the logs to CloudWatch Logs. If you used the CloudFormation template, then you can skip this role creation:
+- An IAM role with specific permissions must be attached to the Lambda function to send the logs to CloudWatch Logs. If you used the CloudFormation template, then you can skip this role creation:
 
 1. Permissions:
 
@@ -75,11 +75,13 @@ Replace "**{Account-ID}**" with your AWS Account ID.
     ]
 }
 ```
-**REQUIRED:** You must set a trigger into the S3 Bucket where the CloudConnexa logs are being pushed. You can perform this operation directly from the Lambda Function console:
+- You must set a trigger into the S3 Bucket where the CloudConnexa logs are being pushed. You can perform this operation directly from the Lambda Function console:
 
 <img src="https://github.com/GabrielPalmar/CloudConnexa-Log-Streaming-to-CloudWatch/blob/main/S3-Trigger.png?raw=true" alt="S3 Trigger" width="700"/>
 
 <img src="https://github.com/GabrielPalmar/CloudConnexa-Log-Streaming-to-CloudWatch/blob/main/S3-Trigger-2.png?raw=true" alt="S3 Trigger" width="700"/>
+
+- Have configured the Log Streaming from CloudConnexa to an S3 bucket: https://openvpn.net/cloud-docs/tutorials/configuration-tutorials/log-streaming/tutorial--configure-aws-s3-bucket-for-cloudconnexa-log-streaming.html.
 
 ## Setup
 You can copy the [Lambda script](/Lambda/Lambda-Function.py) or use the CloudFormation template to allocate the Lambda Function and required IAM roles:
