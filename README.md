@@ -77,9 +77,9 @@ Replace "**{Account-ID}**" with your AWS Account ID.
 ```
 You must set a trigger into the S3 Bucket where the CloudConnexa logs are being pushed. You can perform this operation directly from the Lambda Function console:
 
-![](https://github.com/GabrielPalmar/CloudConnexa-Log-Streaming-to-CloudWatch/blob/main/S3-Trigger.png?raw=true)
+<img src="https://github.com/GabrielPalmar/CloudConnexa-Log-Streaming-to-CloudWatch/blob/main/S3-Trigger.png?raw=true" alt="S3 Trigger" width="700"/>
 
-![](https://github.com/GabrielPalmar/CloudConnexa-Log-Streaming-to-CloudWatch/blob/main/S3-Trigger-2.png)
+<img src="https://github.com/GabrielPalmar/CloudConnexa-Log-Streaming-to-CloudWatch/blob/main/S3-Trigger-2.png?raw=true" alt="S3 Trigger" width="700"/>
 
 ## Setup
 You can copy the Lambda script or use the CloudFormation template to allocate the Lambda Function and required IAM roles.
