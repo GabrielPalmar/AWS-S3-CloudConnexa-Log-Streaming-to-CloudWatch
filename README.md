@@ -88,4 +88,4 @@ Replace "**{Account-ID}**" with your AWS Account ID.
 ## Setup
 You can copy the [Lambda script](/Lambda/Lambda-Function.py) or use the CloudFormation template to allocate the Lambda Function and required IAM roles:
 
-[![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=CC-Resource-Monitor&templateURL=https://aws-cloudconnexa-resource-monitor.s3.us-east-2.amazonaws.com/CloudFormation-Template.yaml)
+[![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=Lambda-Stack&templateURL=https://aws-cloudconnexa-resource-monitor.s3.us-east-2.amazonaws.com/CloudFormation-Template.yaml)
