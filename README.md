@@ -9,7 +9,9 @@
 
 ## Introduction
 Lambda function script that pulls files placed in an S3 bucket from CloudConnexa and places the logs into CloudWatch logs.
-	
+
+**Please note** that only new files placed in the S3 buckets after setting up the Lambda function will be transferred into CloudWatch. Any previously uploaded files in the S3 bucket will not be populated into CloudWatch.
+
 ## Technologies
 Code:
 - Python
