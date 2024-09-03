@@ -1,19 +1,6 @@
-name: Github to AWS CodeCommit Sync
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  sync-to-codecommit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Sync to AWS CodeCommit
-        uses: afinkorea/aws-codecommit-sync@v1.0.0
-        with:
-          repository_name: AWS-S3-CloudConnexa-Log-Streaming-to-CloudWatch
-          aws_region: us-east-2
+- name: Github to AWS CodeCommit Sync
+uses: afinkorea/aws-codecommit-sync@v1.0.0
+with:
+    repository_name: AWS-S3-CloudConnexa-Log-Streaming-to-CloudWatch
+    aws_region: us-east-2
+    branch: main
