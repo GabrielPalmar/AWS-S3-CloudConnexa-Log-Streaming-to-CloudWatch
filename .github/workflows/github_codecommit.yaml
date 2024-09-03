@@ -1,6 +1,9 @@
-- name: Github to AWS CodeCommit Sync
-uses: afinkorea/aws-codecommit-sync@v1.0.0
-with:
+- name: aws-codecommit-sync
+
+  uses: afinkorea/aws-codecommit-sync@v1.0.0
+  
+  with:
     repository_name: AWS-S3-CloudConnexa-Log-Streaming-to-CloudWatch
     aws_region: us-east-2
     branch: main
+          name: aws-codecommit-sync
