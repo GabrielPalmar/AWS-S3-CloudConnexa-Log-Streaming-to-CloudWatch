@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Sync to AWS CodeCommit
-        uses: tsgit18/sync-up-to-codecommit-action@v1.0.6
+        uses: afinkorea/aws-codecommit-sync@v1.0.0
         with:
           repository_name: AWS-S3-CloudConnexa-Log-Streaming-to-CloudWatch
           aws_region: us-east-2
