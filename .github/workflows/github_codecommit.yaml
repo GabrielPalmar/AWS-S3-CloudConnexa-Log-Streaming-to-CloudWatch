@@ -6,4 +6,3 @@
     repository_name: AWS-S3-CloudConnexa-Log-Streaming-to-CloudWatch
     aws_region: us-east-2
     branch: main
-          name: aws-codecommit-sync
